@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+	<title>This is the title of the webpage!</title>
+</head>
+<body>
+	<p id="ip">
+	</p>
+	<p>This is an example paragraph. Anything in the <strong>body</strong> tag will appear on the page, just like this
+		<strong>p</strong> tag and its contents.</p>
+		<script>	
+			fetch('http://localhost:3001/getip', {
+				})
+					.then(response => response.json())
+					.then(data => {
+						console.log(data) // Prints result from `response.json()` in getRequest
+						document.getElementById("ip").innerHTML = data.ip
+						fetch('http://10.157.20.203:3010/status', {
+							method: 'post',
+							headers: new Headers({ "content-type": "application/json" }),
+							body: JSON.stringify({ "Name": "Lampros", "ip": data.ip })
+						})
+							.then(response1 => response1.json())
+							.then(data1 => {
+								console.log(data1) // Prints result from `response.json()` in getRequest
+							})
+							.catch(error1 => console.error(error1))
+					})
+					.catch(error => console.error(error))
+		</script>
+</body>
+</html>
