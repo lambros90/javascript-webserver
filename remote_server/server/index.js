@@ -13,7 +13,7 @@ app.get('/', function(req,res) {
 	res.sendFile(path.join(__dirname + '/../frontend/index.html'));
 });
 
-app.get('/kati', function(req, res){
+app.get('/getip', function(req, res){
 	res.send({"ip":ip.address()})
 })
 
