@@ -13,8 +13,8 @@ app.get('/', function(req,res) {
 	res.sendFile(path.join(__dirname + '/../frontend/index.html'));
 });
 
-app.get('/kati', function(req, res){
+app.get('/getip', function(req, res){
 	res.send({"ip":ip.address()})
 })
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`Port ${port}!`))
